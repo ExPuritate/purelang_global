@@ -1,0 +1,17 @@
+[package]
+name = "pure_lang_proc_macros"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+proc-macro2 = "1.0.94"
+quote = "1.0.40"
+syn = "2.0.100"
+proc-macro-crate = "3.3.0"
+convert_case = "0.8"
+tracing = { workspace = true }
+virtue = { version = "0.0.18", features = ["proc-macro2"] }
+
+
+[lib]
+proc-macro = true

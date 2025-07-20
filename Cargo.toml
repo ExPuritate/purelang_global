@@ -1,0 +1,31 @@
+[package]
+name = "pure_lang_global"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = ["./crates/*"]
+
+[workspace.dependencies]
+tracing = { version = "0.1.41" }
+paste = "1.0.15"
+
+[dependencies]
+anyhow = { version = "1.0.98", features = ["backtrace"] }
+derive_more = { version = "2.0.1", features = ["full"] }
+num_enum = "0.7.3"
+paste = { workspace = true }
+thiserror = "2.0.12"
+iota = "0.2.3"
+enumflags2 = { version = "0.7.12", features = ["std"] }
+derive-ctor = "1.0.6"
+borsh = { version = "1.5.7" }
+getset = "0.1.6"
+proc_macros = { package = "pure_lang_proc_macros", path = "./crates/proc_macros" }
+tracing = { workspace = true }
+indexmap = { version = "2.9", features = ["borsh"] }
+faststr = { version = "0.2.31" }
+bon = "3.6.3"
+const_format = "0.2.34"
+cfg-if = "1.0.1"
+fancy-regex = { version = "0.15.0", features = ["std"] }
