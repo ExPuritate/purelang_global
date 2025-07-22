@@ -23,7 +23,7 @@ borsh = { version = "1.5.7" }
 getset = "0.1.6"
 proc_macros = { package = "pure_lang_proc_macros", path = "./crates/proc_macros" }
 tracing = { workspace = true }
-indexmap = { version = "2.10", features = ["borsh"] }
+indexmap = { version = "2.9", features = ["borsh"] }
 faststr = { version = "0.2.31" }
 bon = "3.6.5"
 const_format = "0.2.34"
