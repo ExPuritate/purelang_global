@@ -4,9 +4,12 @@ pub mod runtime {
     use crate::path_searcher;
     use bon::Builder;
     use getset::{CopyGetters, Getters, MutGetters};
+    use serde::{Deserialize, Serialize};
     use std::sync::Arc;
 
-    #[derive(Clone, Getters, MutGetters, derive_more::Debug, Builder, CopyGetters)]
+    trait AssemblyLookuper = Fn(&str) -> Option<String>;
+
+    #[derive(Clone, Getters, MutGetters, derive_more::Debug, Builder, CopyGetters, Deserialize, Serialize)]
     #[getset(get = "pub")]
     pub struct VMConfig {
         #[builder(default)]
@@ -18,7 +21,8 @@ pub mod runtime {
         is_dynamic_checking_enabled: bool,
         #[debug(skip)]
         #[getset(get_mut = "pub")]
-        assembly_lookuper: Option<Arc<dyn Fn(&str) -> Option<String>>>,
+        #[serde(skip)]
+        assembly_lookuper: Option<Arc<dyn AssemblyLookuper>>,
     }
 
     impl Default for VMConfig {
@@ -44,7 +48,7 @@ pub mod runtime {
         }
     }
 
-    #[derive(Clone, Debug, Getters, CopyGetters)]
+    #[derive(Clone, Debug, Getters, CopyGetters, Deserialize, Serialize)]
     pub struct CPUConfig {
         #[get_copy = "pub"]
         default_register_num: u64,
@@ -62,8 +66,9 @@ pub mod runtime {
 pub mod compiler {
     use bon::Builder;
     use getset::Getters;
+    use serde::{Deserialize, Serialize};
 
-    #[derive(Getters, Builder, Clone, Debug)]
+    #[derive(Getters, Builder, Clone, Debug, Deserialize, Serialize)]
     #[getset(get = "pub")]
     pub struct CompilerConfig {
         stdlib_dir: String,

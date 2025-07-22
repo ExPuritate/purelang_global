@@ -9,6 +9,7 @@
 #![feature(panic_internals)]
 #![feature(format_args_nl)]
 #![feature(iterator_try_collect)]
+#![feature(trait_alias)]
 #![allow(internal_features)]
 
 #[cfg(not(target_pointer_width = "64"))]
