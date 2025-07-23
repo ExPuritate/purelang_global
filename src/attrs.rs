@@ -61,6 +61,7 @@ pub enum Visibility {
 pub enum TypeSpecificAttr {
     Class(BitFlags<ClassImplementationFlags>),
     Struct(BitFlags<StructImplementationFlags>),
+    Interface(BitFlags<InterfaceImplementationFlags>),
 }
 
 #[bitflags]
@@ -75,6 +76,13 @@ pub enum StructImplementationFlags {
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub enum ClassImplementationFlags {
     Static,
+}
+
+#[bitflags]
+#[repr(u8)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum InterfaceImplementationFlags {
+    None,
 }
 
 #[repr(C)]

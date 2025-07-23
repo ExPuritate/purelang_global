@@ -82,7 +82,7 @@ pub mod compiler {
         }
     }
 
-    #[derive(Getters, Builder, Clone, Debug)]
+    #[derive(Getters, Builder, Clone, Debug, Deserialize, Serialize)]
     #[getset(get = "pub")]
     pub struct CompileServiceConfig {
         default_compiler_config: CompilerConfig,
